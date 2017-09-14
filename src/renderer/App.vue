@@ -16,12 +16,10 @@
     methods: {
       startServer () {
         ipcRenderer.send('start')
+        alert('check localhost:3000')
       }
     },
     created () {
-      ipcRenderer.on('started', payload => {
-        console.log(payload)
-      })
     }
   }
 </script>

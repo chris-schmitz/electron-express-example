@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import {exec} from 'child_process'
+import {spawn} from 'child_process'
 import path from 'path'
 
 /**
@@ -48,8 +48,6 @@ app.on('activate', () => {
 
 ipcMain.on('start', (event) => {
   const serverpath = path.join(__dirname, '..', 'server', 'index.js')
-  exec(`node ${serverpath}`, (error, result) => {
-    console.log(result)
-    event.sender.send('started', {result, error})
-  })
+  spawn(`node`, [serverpath], {detached: true})
+  event.sender.send('started')
 })
