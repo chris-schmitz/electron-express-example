@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Electron",
+            "program": "${workspaceRoot}/src/main/index.dev.js",
+            "cwd": "${workspaceRoot}",
+            "stopOnEntry": true,
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "runtimeArgs": [
+                ".", "--enable-logging"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}
